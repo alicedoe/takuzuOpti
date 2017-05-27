@@ -17,19 +17,6 @@ $grillestart16 = startGrid($grille, 16);
     <meta charset="utf-8" />
     <title>Takuzu</title>
     <style>
-        table { float: left; font-size: 1.5em;
-            transform: translateX(-50%);
-            margin-left: 50%;
-            2px solid black;
-            width: 100vh;
-            table-layout: fixed;
-        }
-        td {
-            height:60px;
-            width:60px;
-            border:1px solid;
-            text-align:center;
-        }
         #info button {
             font-size: 3em;}
         #info, #retour {
@@ -39,9 +26,45 @@ $grillestart16 = startGrid($grille, 16);
             font-size: 1.3em; font-weight: bold;}
         #table button { margin: 1em;
         }
-        #table {margin-top: 3em;}
+        #table {
+            width: 400px;
+            margin-left: 1em;
+            background-color: white;
+            float: left;
+        }
 
         .container-fluid button {background-color: #ee7117; border:none;}
+        .line {
+            clear: both;
+            font-size: 1.5em;
+            font-weight: bold;
+            font-family: "Arial Black";
+        }
+        .square {
+            float:left;
+            position: relative;
+            width: 12.5%;
+            padding-bottom: 12.5%;
+            overflow:hidden;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .content {
+            position:absolute;
+            height: 100%;
+            width: 100%;
+
+        }
+        .table{
+            display:table;
+            width:100%;
+            height:100%;
+        }
+        .table-cell{
+            display:table-cell;
+            vertical-align:middle;
+        }
     </style>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
@@ -52,115 +75,146 @@ $grillestart16 = startGrid($grille, 16);
     <div id="info" class="text-center col-lg-12 col-xs-12 col-md-12 col-sm-12">
         <a href="./takuzuhtml.php"><button class="btn btn-warning glyphicon glyphicon-retweet"></button></a>
     </div>
+
     <div id="table" class="text-center col-lg-12 col-xs-12 col-md-12 col-sm-12">
         <p>Solution : </p>
-        <button class="btn btn-warning" onclick="generate('grillesolution')">Générer l'image</button>
-        <table id="grillesolution" style="background-color: white;">
-            <tbody>
-            <?php
-            // pour chaque ligne
-            for ($i=0; $i<8; $i++)
-            {
-                ?>
-                <tr>
-                    <?php		// pour chaque colonne (de la ligne)
-                    for ($j=0; $j<8; $j++)
-                    {
-                        ?>		<td>
-                        <?php
-                        echo $grille[$i][$j];
-                        ?>		</td>
-                    <?php	} // end for
+        <button class="btn btn-warning" onclick="generate('grille1')">Générer l'image</button>
+        <div id="grille1">
+    <?php
+    for ($i=0; $i<8; $i++) {
+       ?> <div class="line"> <?php
+    for ($j=0; $j<8; $j++)
+    {
+        ?> <div class="square">
+        <div class="content">
+            <div class="table">
+                <div class="table-cell">
+                    <?php
+                    echo $grille[$i][$j];
                     ?>
-                </tr>
-                <?php
-            } // end for
-            ?>
-            </tbody>
-        </table>
-
+                </div>
+            </div>
+        </div>
+    </div> <?php
+    } ?>
+    </div> <?php
+    }
+    ?>
     </div>
+    </div>
+
+
     <div id="table" class="text-center col-lg-12 col-xs-12 col-md-12 col-sm-12">
         <p>Facile : </p>
-        <button class="btn btn-warning" onclick="generate('grillea47faire')">Générer l'image</button>
-        <table id="grillea47faire" style="background-color: white;">
-            <tbody>
+        <button class="btn btn-warning" onclick="generate('grille2')">Générer l'image</button>
+        <div id="grille2">
             <?php
-            // pour chaque ligne
-            for ($i=0; $i<8; $i++)
-            {
-                ?>
-                <tr>
-                    <?php		// pour chaque colonne (de la ligne)
+            for ($i=0; $i<8; $i++) {
+                ?> <div class="line"> <?php
                     for ($j=0; $j<8; $j++)
                     {
-                        ?>		<td>
-                        <?php
-                        echo $grillestart16[$i][$j];
-                        //                if ($grillestart[$i][$j]== "_") { echo " ";} else {echo $grillestart[$i][$j];};
-                        ?>		</td>
-                    <?php	} // end for
-                    ?>
-                </tr>
-                <?php
-            } // end for
+                        ?> <div class="square">
+                        <div class="content">
+                            <div class="table">
+                                <div class="table-cell">
+                                    <?php
+                                    echo $grillestart16[$i][$j];
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <?php
+                    } ?>
+                </div> <?php
+            }
             ?>
-            </tbody>
-        </table>
+        </div>
 
     </div>
     <div id="table" class="text-center col-lg-12 col-xs-12 col-md-12 col-sm-12">
         <p>Difficile : </p>
-        <button class="btn btn-warning" onclick="generate('grillea53faire')">Générer l'image</button>
-        <table id="grillea53faire" style="background-color: white;">
-            <tbody>
+        <button class="btn btn-warning" onclick="generate('grille3')">Générer l'image</button>
+        <div id="grille3">
             <?php
-            // pour chaque ligne
-            for ($i=0; $i<8; $i++)
-            {
-                ?>
-                <tr>
-                    <?php		// pour chaque colonne (de la ligne)
+            for ($i=0; $i<8; $i++) {
+                ?> <div class="line"> <?php
                     for ($j=0; $j<8; $j++)
                     {
-                        ?>		<td>
-                        <?php
-                        echo $grillestart21[$i][$j];
-                        //                if ($grillestart[$i][$j]== "_") { echo " ";} else {echo $grillestart[$i][$j];};
-                        ?>		</td>
-                    <?php	} // end for
-                    ?>
-                </tr>
-                <?php
-            } // end for
+                        ?> <div class="square">
+                        <div class="content">
+                            <div class="table">
+                                <div class="table-cell">
+                                    <?php
+                                    echo $grillestart21[$i][$j];
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <?php
+                    } ?>
+                </div> <?php
+            }
             ?>
-            </tbody>
-        </table>
+        </div>
 
     </div>
-
-</div>
+    <div id="imgcanvas"></div>
 <script src="lib/jquery-3.2.1.min.js"></script>
 <script src="lib/html2canvas.js"></script>
 <script>
+    function takeHighResScreenshot(srcEl, scaleFactor) {
+        // Save original size of element
+        var originalWidth = 895;
+        var originalHeight = 797.15;
+        // Force px size (no %, EMs, etc)
+        srcEl.style.width = "895px";
+        srcEl.style.height = "797.15px";
+
+        // Position the element at the top left of the document because of bugs in html2canvas. The bug exists when supplying a custom canvas, and offsets the rendering on the custom canvas based on the offset of the source element on the page; thus the source element MUST be at 0, 0.
+        // See html2canvas issues #790, #820, #893, #922
+        srcEl.style.position = "absolute";
+        srcEl.style.top = "0";
+        srcEl.style.left = "0";
+
+        // Create scaled canvas
+        var scaledCanvas = document.createElement("canvas");
+        scaledCanvas.width = originalWidth * scaleFactor;
+        scaledCanvas.height = originalHeight * scaleFactor;
+        scaledCanvas.style.width = originalWidth + "px";
+        scaledCanvas.style.height = originalHeight + "px";
+        var scaledContext = scaledCanvas.getContext("2d");
+        scaledContext.scale(scaleFactor, scaleFactor);
+
+        html2canvas(srcEl, { canvas: scaledCanvas })
+            .then(function(canvas) {
+                var data = canvas.toDataURL();
+            window.open(data);
+            });
+    };
+
+
+
+    // With scale: 2 (dpi: 192).
+
+
     function generate(id) {
-
-        document.getElementById(id).style.transform = document.getElementById(id).style.webkitTransform = 'scale(4)'
+        document.getElementById(id).style.transform = document.getElementById(id).style.webkitTransform = 'scale(2)'
         document.getElementById(id).style.transformOrigin = document.getElementById(id).style.webkitTransformOrigin = '0 0'
-        html2canvas(document.getElementById(id), {
-            width: document.getElementById(id).offsetWidth * 4,
-            height: document.getElementById(id).offsetHeight * 4
-        }).then(function(canvas) {
-            var data = canvas.toDataURL();
-            window.open(data);// now img quality doubled!
+        html2canvas(document.getElementById(id),{
+            width: document.getElementById(id).offsetWidth * 2,
+            height: document.getElementById(id).offsetHeight * 2,
+            background:"#fff"
+        } ).then(function(canvas) {
+            $("#imgcanvas").append(canvas);
+            document.getElementById(id).style.transform = document.getElementById(id).style.webkitTransform = 'scale(1)'
         })
-
-        document.getElementById(id).style.transform = document.getElementById(id).style.webkitTransform = 'scale(1)';
-        var elmt = document.getElementById(id);
-        elmt.style.transform = "translateX(-50%)";
-        elmt.style.margin = "margin-left: 50%";
-        elmt.style.width = "100vh";
-        elmt.style.table = "table-layout: fixed";
+//
+//        document.getElementById(id).style.transform = document.getElementById(id).style.webkitTransform = 'scale(1)';
+//        var elmt = document.getElementById(id);
+//        elmt.style.transform = "translateX(-50%)";
+//        elmt.style.margin = "margin-left: 50%";
+//        elmt.style.width = "100vh";
+//        elmt.style.table = "table-layout: fixed";
     }
 </script>
 </body>
