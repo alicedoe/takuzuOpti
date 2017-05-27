@@ -7,3 +7,9 @@
 ## TODO
 
 - [ ] Améliorer le tableau qui affiche la grille
+
+## Fichiers
+
+- Fichier `takuoptihtml.php` version htlm avec export png possible
+- Fichier `takuopticonsole.php` version console avec des stats
+- Fichier `functions.php` fonctions utilisés pour générer la grille
