@@ -121,11 +121,17 @@ function newLineTest($grille,$nb)
             //sinon on doit juste vérifier qu'il n'y a pas de risque de triplon sur la ligne
         } elseif ($nb == 6 && array_sum($column4) == 2 ) {
             if (checkTriplonTest($grille[$nb],$i,1) == true ) { array_push($grille[$nb], "1"); } else { return false; }
+
+        } elseif ($i == 7 && array_sum($grille[$nb]) == 3 ) {
+            if (checkTriplonTest($grille[$nb],$i,1) == true ) { array_push($grille[$nb], "1"); } else { return false; }
+
+        } elseif ($i == 6 && array_sum($grille[$nb]) == 2 ) {
+            if (checkTriplonTest($grille[$nb],$i,1) == true ) { array_push($grille[$nb], "1"); } else { return false; }
             //sinon on doit juste vérifier qu'il n'y a pas de risque de triplon sur la ligne
         } else { $bin = noTriplonTest($grille[$nb],$i); array_push($grille[$nb], $bin); }
     }
-    //si la ligne générée n'est pas égal à 4 on retourne false
-    if ( array_sum($grille[$nb]) != 4 ) { return false; }
+    //si la ligne générée n'est pas égal à 4 ou si à la fin du tableau une colonne n'est pas égale à 4 on retourne false
+    if ( array_sum($grille[$nb]) != 4 || (!newGridTest($grille) && $nb == 7) ) { return false; }
 
     //la ligne générée est correcte on la retourne
     return $grille[$nb];

@@ -23,10 +23,6 @@
             //grid() tant qu'elle est fausse pour créer la grille de 8x8 respectant les règles du takuzu
             do {
                 $grille = grid();
-                if ($grille != false) {
-                    $columnok = newGridTest($grille);
-                    if ( $columnok == false ){ $grille = false; }
-                }
                 $nbgrille++;
             } while ($grille == false);
 
