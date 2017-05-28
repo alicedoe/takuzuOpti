@@ -12,7 +12,13 @@ function displayGridTest($grille) {
         for ($j = 0; $j < count($grille[$i]); $j++) {
             echo $grille[$i][$j]." ";
         }
-        echo "</br>";
+        echo "___".array_sum($grille[$i]) ."</br>";
+    }
+    echo "</br>";
+
+    for ($i = 0; $i < 8; $i++) {
+        $column = array_column($grille, $i);
+        echo array_sum($column)." ";
     }
     echo "</br>";
 }
@@ -120,6 +126,7 @@ function newLineTest($grille,$nb)
     }
     //si la ligne générée n'est pas égal à 4 on retourne false
     if ( array_sum($grille[$nb]) != 4 ) { return false; }
+
     //la ligne générée est correcte on la retourne
     return $grille[$nb];
 }
@@ -137,6 +144,7 @@ function newGridTest($grille)
     for ($i = 0; $i < 8; $i++) {
         $column = array_column($grille, $i);
         if (array_sum($column) != 4) { return false; }
+
     }
 
     return true;

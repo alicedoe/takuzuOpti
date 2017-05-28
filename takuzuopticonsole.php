@@ -7,11 +7,12 @@ $timestamp_debut = microtime(true);
 $nbgrille = 0;
 do {
     $grille = grid();
-    if (!newGridTest($grille)) {
-        $grille = false;
+    if ($grille != false) {
+        $columnok = newGridTest($grille);
+        if ( $columnok == false ){ $grille = false; }
     }
     $nbgrille++;
-} while ($grille == false && $columnok == false);
+} while ($grille == false);
 
 displayGridTest($grille);
 
