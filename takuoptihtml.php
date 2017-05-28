@@ -27,10 +27,7 @@ $grillestart16 = startGrid($grille, 16);
         #table button { margin: 1em;
         }
         #table {
-            width: 400px;
-            margin-left: 1em;
             background-color: white;
-            float: left;
         }
 
         .container-fluid button {background-color: #ee7117; border:none;}
@@ -73,10 +70,10 @@ $grillestart16 = startGrid($grille, 16);
     <div id="retour" class="text-center col-lg-12 col-xs-12 col-md-12 col-sm-12">
         <a href="index.php"><button class="btn btn-warning" id="accueil">Retour à l'accueil</button></a></div>
     <div id="info" class="text-center col-lg-12 col-xs-12 col-md-12 col-sm-12">
-        <a href="./takuzuhtml.php"><button class="btn btn-warning glyphicon glyphicon-retweet"></button></a>
+        <a href="./takuoptihtml.php"><button class="btn btn-warning glyphicon glyphicon-retweet"></button></a>
     </div>
 
-    <div id="table" class="text-center col-lg-12 col-xs-12 col-md-12 col-sm-12">
+    <div id="table" class="text-center col-lg-4 col-xs-12 col-md-4 col-sm-12">
         <p>Solution : </p>
         <button class="btn btn-warning" onclick="generate('grille1')">Générer l'image</button>
         <div id="grille1">
@@ -104,7 +101,7 @@ $grillestart16 = startGrid($grille, 16);
     </div>
 
 
-    <div id="table" class="text-center col-lg-12 col-xs-12 col-md-12 col-sm-12">
+    <div id="table" class="text-center col-lg-4 col-xs-12 col-md-4 col-sm-12">
         <p>Facile : </p>
         <button class="btn btn-warning" onclick="generate('grille2')">Générer l'image</button>
         <div id="grille2">
@@ -131,7 +128,7 @@ $grillestart16 = startGrid($grille, 16);
         </div>
 
     </div>
-    <div id="table" class="text-center col-lg-12 col-xs-12 col-md-12 col-sm-12">
+    <div id="table" class="text-center col-lg-4 col-xs-12 col-md-4 col-sm-12">
         <p>Difficile : </p>
         <button class="btn btn-warning" onclick="generate('grille3')">Générer l'image</button>
         <div id="grille3">
