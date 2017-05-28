@@ -111,12 +111,14 @@ function newLineTest($grille,$nb)
             //on est obligé de mettre un 0 mais si cela ne colle pas au règle on retourne false
             if (checkTriplonTest($grille[$nb],$i,0) == true ) { array_push($grille[$nb], "0"); } else { return false; }
             //sinon on anticipe le risque de triplon croisé 11 sur la colonne à venir & 00 surla ligne
-        } elseif ($i > 1 && gettype(strpos($columnStringTriplonNext, '11')) == "integer" && $grille[$i - 1] == 0 ) {
-            if (checkTriplonTest($grille[$nb],$i,1) == true ) { array_push($grille[$nb], "1"); } else { return false; }
-            //sinon on anticipe le risque de triplon croisé 00 sur la colonne à venir & 00 surla ligne
-        } elseif ($i > 1 && gettype(strpos($columnStringTriplonNext, '00')) == "integer" && $grille[$i - 1] == 1 ) {
-            if (checkTriplonTest($grille[$nb],$i,0) == true ) { array_push($grille[$nb], "0"); } else { return false; }
-        } elseif ($nb == 7 && array_sum($column4) == 3 ) {
+        }
+//        elseif ($i > 1 && gettype(strpos($columnStringTriplonNext, '11')) == "integer" && $grille[$i - 1] == 0 ) {
+//            if (checkTriplonTest($grille[$nb],$i,1) == true ) { array_push($grille[$nb], "1"); } else { return false; }
+//            //sinon on anticipe le risque de triplon croisé 00 sur la colonne à venir & 00 surla ligne
+//        } elseif ($i > 1 && gettype(strpos($columnStringTriplonNext, '00')) == "integer" && $grille[$i - 1] == 1 ) {
+//            if (checkTriplonTest($grille[$nb],$i,0) == true ) { array_push($grille[$nb], "0"); } else { return false; }
+//        }
+        elseif ($nb == 7 && array_sum($column4) == 3 ) {
             if (checkTriplonTest($grille[$nb],$i,1) == true ) { array_push($grille[$nb], "1"); } else { return false; }
             //sinon on doit juste vérifier qu'il n'y a pas de risque de triplon sur la ligne
         } elseif ($nb == 6 && array_sum($column4) == 2 ) {
@@ -150,6 +152,28 @@ function newGridTest($grille)
     for ($i = 0; $i < 8; $i++) {
         $column = array_column($grille, $i);
         if (array_sum($column) != 4) { return false; }
+
+    }
+
+    for ($i = 0; $i < 8; $i++) {
+
+        for ($j = 0; $j < 8; $j++) {
+            $column = array_column($grille, $i);
+            $column2 = array_column($grille, $j);
+            if ($i != $j && $column == $column2) {
+                return false;
+            }
+        }
+
+    }
+
+    for ($i = 0; $i < 8; $i++) {
+
+        for ($j = 0; $j < 8; $j++) {
+            if ($i != $j && $grille[$i] == $grille[$j]) {
+                return false;
+            }
+        }
 
     }
 
