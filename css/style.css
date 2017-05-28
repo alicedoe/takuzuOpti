@@ -11,6 +11,12 @@
     background-color: white;
 }
 
+#grille1, #grille2, #grille3 {
+    font-size: 1.8em;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 .container-fluid button {background-color: #ee7117; border:none;}
 .line {
     clear: both;

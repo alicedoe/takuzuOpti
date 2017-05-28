@@ -8,8 +8,6 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div id="retour" class="text-center col-lg-12 col-xs-12 col-md-12 col-sm-12">
-        <a href="index.php"><button class="btn btn-warning" id="accueil">Retour à l'accueil</button></a></div>
     <div id="info" class="text-center col-lg-12 col-xs-12 col-md-12 col-sm-12">
         <a href="./takuoptihtml.php"><button class="btn btn-warning glyphicon glyphicon-retweet"></button></a>
     </div>
@@ -25,7 +23,12 @@
             //grid() tant qu'elle est fausse pour créer la grille de 8x8 respectant les règles du takuzu
             do {
                 $grille = grid();
-            } while ($grille == false);
+                //$grille deviens fausse si ses colonnes ne sont pas égales à 4
+                if (!newGridTest($grille)) {
+                    $grille = false;
+                }
+                $nbgrille++;
+            } while ($grille == false && $columnok == false);
 
             $grillestart21 = startGrid($grille, 21);
             $grillestart16 = startGrid($grille, 16);

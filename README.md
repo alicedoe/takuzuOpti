@@ -1,7 +1,7 @@
 # Générateur de grille de takuzu 8x8
 
 - [x] Algorithme pour générer une grille de 8 x 8 respectant les régèles du takuzu
-- [x] Améliorer la 1ère version qui était trop en brute force génération d'1 grille en moins de 0,01sec
+- [x] Améliorer la 1ère version qui était trop en brute force génération d'1 grille en moins de 0,1sec
 - [x] PHP 7.0
 - [ ] Améliorer l'affichage HTML/CSS
 

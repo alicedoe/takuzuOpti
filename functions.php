@@ -110,14 +110,36 @@ function newLineTest($grille,$nb)
             //sinon on anticipe le risque de triplon croisé 00 sur la colonne à venir & 00 surla ligne
         } elseif ($i > 1 && gettype(strpos($columnStringTriplonNext, '00')) == "integer" && $grille[$i - 1] == 1 ) {
             if (checkTriplonTest($grille[$nb],$i,0) == true ) { array_push($grille[$nb], "0"); } else { return false; }
+        } elseif ($nb == 7 && array_sum($column4) == 3 ) {
+            if (checkTriplonTest($grille[$nb],$i,1) == true ) { array_push($grille[$nb], "1"); } else { return false; }
+            //sinon on doit juste vérifier qu'il n'y a pas de risque de triplon sur la ligne
+        } elseif ($nb == 6 && array_sum($column4) == 2 ) {
+            if (checkTriplonTest($grille[$nb],$i,1) == true ) { array_push($grille[$nb], "1"); } else { return false; }
             //sinon on doit juste vérifier qu'il n'y a pas de risque de triplon sur la ligne
         } else { $bin = noTriplonTest($grille[$nb],$i); array_push($grille[$nb], $bin); }
-
     }
     //si la ligne générée n'est pas égal à 4 on retourne false
     if ( array_sum($grille[$nb]) != 4 ) { return false; }
     //la ligne générée est correcte on la retourne
     return $grille[$nb];
+}
+
+/**
+ * Test si les colonnes de la grille $grille sont bien égal à 4
+ *
+ * @param array $grille
+ *
+ * @return boolean
+ */
+function newGridTest($grille)
+{
+
+    for ($i = 0; $i < 8; $i++) {
+        $column = array_column($grille, $i);
+        if (array_sum($column) != 4) { return false; }
+    }
+
+    return true;
 }
 
 /**
