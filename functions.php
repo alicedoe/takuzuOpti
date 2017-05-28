@@ -87,6 +87,11 @@ function newLineTest($grille,$nb)
         //transforme en string $columnTriplon
         $columnStringTriplon = implode("", $columnTriplon);
 
+        //stock la colonne des 2 lignes précédentes sous forme de tableau de la case que nous voulons créer
+        $columnTriplonNext = array_column($grilleTempTriplon, $i+1);
+        //transforme en string $columnTriplon
+        $columnStringTriplonNext = implode("", $columnTriplonNext);
+
         //à partir de la ligne 4 et + et si le total de la colonne en cours est égal à 4
         if ($nb >= 4 && array_sum($column4) == 4 && gettype(strpos($columnStringTriplon, '00')) == "integer") {
             //on est obligé de mettre un 0 mais si cela ne colle pas au règle on retourne false
@@ -98,6 +103,12 @@ function newLineTest($grille,$nb)
             //sinon si on risque un triplon de 11 via la colonne
         } elseif (gettype(strpos($columnStringTriplon, '11')) == "integer") {
             //on est obligé de mettre un 0 mais si cela ne colle pas au règle on retourne false
+            if (checkTriplonTest($grille[$nb],$i,0) == true ) { array_push($grille[$nb], "0"); } else { return false; }
+            //sinon on anticipe le risque de triplon croisé 11 sur la colonne à venir & 00 surla ligne
+        } elseif ($i > 1 && gettype(strpos($columnStringTriplonNext, '11')) == "integer" && $grille[$i - 1] == 0 ) {
+            if (checkTriplonTest($grille[$nb],$i,1) == true ) { array_push($grille[$nb], "1"); } else { return false; }
+            //sinon on anticipe le risque de triplon croisé 00 sur la colonne à venir & 00 surla ligne
+        } elseif ($i > 1 && gettype(strpos($columnStringTriplonNext, '00')) == "integer" && $grille[$i - 1] == 1 ) {
             if (checkTriplonTest($grille[$nb],$i,0) == true ) { array_push($grille[$nb], "0"); } else { return false; }
             //sinon on doit juste vérifier qu'il n'y a pas de risque de triplon sur la ligne
         } else { $bin = noTriplonTest($grille[$nb],$i); array_push($grille[$nb], $bin); }
